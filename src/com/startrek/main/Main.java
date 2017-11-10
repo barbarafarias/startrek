@@ -16,12 +16,12 @@ public class Main {
 			Character character = new Character(args);
 			
 			String kligonName = Translator.translate(args);
-			character.setKligonName(kligonName);
+			character.setKlingonName(kligonName);
 			
 			String characterSpecie = Stapi.getCharacterSpecie(character.getEnglishName());
 			character.setSpecie(characterSpecie);
 			
-			System.out.println(character.getKligonName());
+			System.out.println(character.getKlingonName());
 			System.out.println(character.getSpecie());
 		}
 		

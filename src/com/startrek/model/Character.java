@@ -3,7 +3,7 @@ package com.startrek.model;
 public class Character {
 	
 	private String englishName;
-	private String kligonName;
+	private String klingonName;
 	private String specie;
 	
 	public Character() {
@@ -22,11 +22,11 @@ public class Character {
 	public void setEnglishName(String englishName) {
 		this.englishName = englishName;
 	}
-	public String getKligonName() {
-		return kligonName;
+	public String getKlingonName() {
+		return klingonName;
 	}
-	public void setKligonName(String kligonName) {
-		this.kligonName = kligonName;
+	public void setKlingonName(String kligonName) {
+		this.klingonName = kligonName;
 	}
 	public String getSpecie() {
 		return specie;
