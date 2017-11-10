@@ -7,10 +7,15 @@ public class Main {
 
 	public static void main(String[] args) {
 		try {
-			String name = args[0];
-			Character character = new Character(name);
 			
-			String kligonName = Translator.translateEnglishName(name);
+			if (args.length == 0)
+			{
+				System.out.println("Please enter a character name.");
+				return;
+			}
+			Character character = new Character(args);
+			
+			String kligonName = Translator.translate(args);
 			character.setKligonName(kligonName);
 			
 			String characterSpecie = Stapi.getCharacterSpecie(character.getEnglishName());

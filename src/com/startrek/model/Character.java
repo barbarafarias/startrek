@@ -9,8 +9,11 @@ public class Character {
 	public Character() {
 		
 	}
-	public Character(String name) {
-		this.englishName = name;
+	public Character(String[] fullName) {
+		for (String name : fullName) {
+			this.englishName += name + " ";
+		}
+		this.englishName = this.englishName.trim();
 	}
 
 	public String getEnglishName() {
