@@ -11,7 +11,6 @@ public class Translator {
 		fullKligonName = fullKligonName.replaceFirst(" 0x0020 ", "");
 		
 		return fullKligonName;
-		//return "0xF8E5 0xF8D6 0xF8E5 0xF8E1 0xF8D0";
 		
 	}
 
