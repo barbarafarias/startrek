@@ -2,9 +2,9 @@ package com.startrek.model;
 
 public class Character {
 	
-	private String englishName;
-	private String klingonName;
-	private String specie;
+	private String englishName = "";
+	private String klingonName = "";
+	private String specie = "";
 	
 	public Character() {
 		
