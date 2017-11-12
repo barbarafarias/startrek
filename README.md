@@ -13,4 +13,4 @@
 
 ### Notes
 * For names with special char use slash scape.
-Example: $ java -jar SheldonApp-1.0.jar Ch\'Pok
+Example: $ java -jar SheldonApp-1.0.jar Ch\\'Pok
