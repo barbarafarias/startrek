@@ -18,21 +18,21 @@ public class Translator {
 		String fullKlingonName = "";
 		for (int index = 0; index < name.length(); index++) {
 		     char letter = name.charAt(index);
-		     String KlingonName = "";
+		     String KlingonName = "0x";
 		     switch (letter) {
 				case 'a':
 				case 'A':
-						KlingonName += "0XF8D0";
+						KlingonName += "F8D0";
 					break;
 				case 'b':
 				case 'B':
-						KlingonName += "0XF8D1";
+						KlingonName += "F8D1";
 					break;
 				case 'c':
 				case 'C':
 						if (index + 1 < name.length()) {
 							if ((name.charAt(index+1) == 'h') || (name.charAt(index+1) == 'H')) {
-								KlingonName += "0XF8D2";
+								KlingonName += "F8D2";
 								index++;
 							}
 							else
@@ -43,17 +43,17 @@ public class Translator {
 					break;
 				case 'd':
 				case 'D':
-						KlingonName += "0XF8D3";
+						KlingonName += "F8D3";
 					break;
 				case 'e':
 				case 'E':
-						KlingonName += "0XF8D4";
+						KlingonName += "F8D4";
 					break;
 				case 'g':
 				case 'G':
 					if (index + 1 < name.length()) {
 						if ((name.charAt(index+1) == 'h') || (name.charAt(index+1) == 'H')) {
-							KlingonName += "0XF8D5";
+							KlingonName += "F8D5";
 							index++;
 						}
 						else
@@ -64,58 +64,58 @@ public class Translator {
 					break;
 				case 'h':
 				case 'H':
-						KlingonName += "0XF8D6";
+						KlingonName += "F8D6";
 					break;
 				case 'i':
 				case 'I':
-						KlingonName += "0XF8D7";
+						KlingonName += "F8D7";
 					break;
 				case 'j':
 				case 'J':
-						KlingonName += "0XF8D8";
+						KlingonName += "F8D8";
 					break;
 				case 'l':
 				case 'L':
-						KlingonName += "0XF8D9";
+						KlingonName += "F8D9";
 					break;
 				case 'm':
 				case 'M':
-						KlingonName += "0XF8DA";
+						KlingonName += "F8DA";
 					break;
 				case 'n':
 				case 'N':
 					if (index + 1 < name.length()) {
 						if ((name.charAt(index+1) == 'g') || (name.charAt(index+1) == 'G')) {
-							KlingonName += "0XF8DC";
+							KlingonName += "F8DC";
 							index++;
 						}
 						else
-							KlingonName += "0XF8DB";	
+							KlingonName += "F8DB";	
 					}
 					else
-						KlingonName += "0XF8DB";
+						KlingonName += "F8DB";
 					break;
 				case 'o':
 				case 'O':
-						KlingonName += "0XF8DD";
+						KlingonName += "F8DD";
 					break;
 				case 'p':
 				case 'P':
-						KlingonName += "0XF8DE";
+						KlingonName += "F8DE";
 					break;
 				case 'q':
-						KlingonName += "0XF8DF";
+						KlingonName += "F8DF";
 					break;
 				case 'Q':
-					KlingonName += "0XF8E0";
+					KlingonName += "F8E0";
 					break;
 				case 'r':
 				case 'R':
-					KlingonName += "0XF8E1";
+					KlingonName += "F8E1";
 					break;
 				case 's':
 				case 'S':
-					KlingonName += "0XF8E2";
+					KlingonName += "F8E2";
 					break;
 				case 't':
 				case 'T':
@@ -123,7 +123,7 @@ public class Translator {
 						if ((name.charAt(index+1) == 'l') || (name.charAt(index+1) == 'L')) {
 							if (index + 2 < name.length()) {
 								if ((name.charAt(index+2) == 'h') || (name.charAt(index+2) == 'H')) {
-									KlingonName += "0XF8E4";
+									KlingonName += "F8E4";
 									index += 2;
 								}
 								else
@@ -133,27 +133,32 @@ public class Translator {
 								throw new Exception("This is not a translatable name");
 						}
 						else
-							KlingonName += "0XF8E3";
+							KlingonName += "F8E3";
 					}
 					else
-						KlingonName += "0XF8E3";
+						KlingonName += "F8E3";
 					break;
 				case 'u':
 				case 'U':
-					KlingonName += "0XF8E5";
+					KlingonName += "F8E5";
 					break;
 				case 'v':
 				case 'V':
-					KlingonName += "0XF8E6";
+					KlingonName += "F8E6";
 					break;
 				case 'w':
 				case 'W':
-					KlingonName += "0XF8E7";
+					KlingonName += "F8E7";
 					break;
 				case 'y':
 				case 'Y':
-					KlingonName += "0XF8E8";
+					KlingonName += "F8E8";
 					break;
+				case '\'':
+					KlingonName += "F8E9";
+					break;
+				default:
+					throw new Exception("This is not a translatable name");
 			}
 		    
 		     fullKlingonName += KlingonName + " ";
