@@ -1,3 +1,7 @@
+# Bin an target folder
+bin/
+target/
+
 # Compiled class file
 *.class
 
