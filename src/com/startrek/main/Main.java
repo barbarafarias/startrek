@@ -15,8 +15,8 @@ public class Main {
 			}
 			Character character = new Character(args);
 
-			String kligonName = Translator.translate(args);
-			character.setKlingonName(kligonName);
+			String klingonName = Translator.translate(args);
+			character.setKlingonName(klingonName);
 
 			String characterSpecie = Stapi.getCharacterSpecie(character.getEnglishName());
 			character.setSpecie(characterSpecie);
