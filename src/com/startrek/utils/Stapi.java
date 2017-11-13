@@ -41,6 +41,7 @@ public class Stapi {
 					Matcher m = p.matcher(phrase);
 					if (m.find()) {
 						String uid = characteres.getJSONObject(i).getString("uid");
+						System.out.println(uid);
 						WebTarget fullCharacterTarget = baseTarget.queryParam("uid", uid);
 						Response fullCharacterResponse = fullCharacterTarget.request(MediaType.APPLICATION_JSON_TYPE)
 								.get();
