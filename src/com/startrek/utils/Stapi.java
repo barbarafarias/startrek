@@ -12,13 +12,15 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
 public class Stapi {
 
+	private static Client client = ClientBuilder.newClient();
+	private static WebTarget baseTarget = client.target("http://stapi.co/api/v1/rest/character");
+
 	public static String getCharacterSpecie(String englishName) throws Exception {
-		Client client = ClientBuilder.newClient();
-		WebTarget baseTarget = client.target("http://stapi.co/api/v1/rest/character");
 		String specie = "";
 
 		Form formData = new Form();
@@ -33,35 +35,19 @@ public class Stapi {
 			// getting characters with the parameter name
 			JSONArray characteres = obj.getJSONArray("characters");
 			if (characteres.length() > 0) {
-				Boolean foundCharacter = false;
-				// getting the uid from the character found
+				String uid = "";
 				for (int i = 0; i < characteres.length(); i++) {
-					String phrase = characteres.getJSONObject(i).getString("name").toLowerCase();
-					Pattern p = Pattern.compile("\\b(?<!\')" + englishName.toLowerCase() + "\\b(?!\')");
-					Matcher m = p.matcher(phrase);
-					if (m.find()) {
-						String uid = characteres.getJSONObject(i).getString("uid");
-						System.out.println(uid);
-						WebTarget fullCharacterTarget = baseTarget.queryParam("uid", uid);
-						Response fullCharacterResponse = fullCharacterTarget.request(MediaType.APPLICATION_JSON_TYPE)
-								.get();
-						if (fullCharacterResponse.getStatus() == 200) {
-							String fullResult = fullCharacterResponse.readEntity(String.class);
-							JSONObject fullCharacter = new JSONObject(fullResult);
-							JSONArray characterSpecies = fullCharacter.getJSONObject("character")
-									.getJSONArray("characterSpecies");
-							if (characterSpecies.length() > 0)
-								specie = characterSpecies.getJSONObject(0).getString("name");
-							else
-								throw new Exception("No species found for this character.");
-						} else
-							throw new Exception("No characters found.");
-						foundCharacter = true;
+					// getting uid from character
+					uid = getUidFromCharacter(characteres.getJSONObject(i), englishName);
+					if (uid != null)
 						break;
-
-					}
 				}
-				if (!foundCharacter)
+				if (uid != null) {
+					// getting specie from uid character
+					specie = getSpecieFromUid(uid);
+					if (specie == null)
+						throw new Exception("No species found for this character.");
+				} else
 					throw new Exception("No characters found.");
 			} else
 				throw new Exception("No characters found.");
@@ -69,5 +55,31 @@ public class Stapi {
 			System.out.println(characterResponse.toString());
 
 		return specie;
+	}
+
+	private static String getUidFromCharacter(JSONObject obj, String englishName) throws JSONException {
+		String characterName = obj.getString("name").toLowerCase();
+		Pattern pattern = Pattern.compile("\\b(?<!\')" + englishName.toLowerCase() + "\\b(?!\')");
+		Matcher matcher = pattern.matcher(characterName);
+		if (matcher.find()) {
+			return obj.getString("uid");
+		} else
+			return null;
+	}
+
+	private static String getSpecieFromUid(String uid) throws Exception {
+		WebTarget fullCharacterTarget = baseTarget.queryParam("uid", uid);
+		Response fullCharacterResponse = fullCharacterTarget.request(MediaType.APPLICATION_JSON_TYPE).get();
+		if (fullCharacterResponse.getStatus() == 200) {
+			String fullResult = fullCharacterResponse.readEntity(String.class);
+			JSONObject fullCharacter = new JSONObject(fullResult);
+			JSONArray characterSpecies = fullCharacter.getJSONObject("character").getJSONArray("characterSpecies");
+			if (characterSpecies.length() > 0)
+				return characterSpecies.getJSONObject(0).getString("name");
+			else
+				throw new Exception("No species found for this character.");
+		} else
+			throw new Exception("No characters found.");
+
 	}
 }
