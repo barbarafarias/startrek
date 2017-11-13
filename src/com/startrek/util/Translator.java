@@ -1,4 +1,4 @@
-package com.startrek.utils;
+package com.startrek.util;
 
 public class Translator {
 

@@ -1,8 +1,8 @@
 package com.startrek.main;
 
 import com.startrek.model.Character;
-import com.startrek.services.StapiService;
-import com.startrek.utils.Translator;
+import com.startrek.service.StapiService;
+import com.startrek.util.Translator;
 
 public class Main {
 
