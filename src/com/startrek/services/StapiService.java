@@ -1,4 +1,4 @@
-package com.startrek.utils;
+package com.startrek.services;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,7 +15,7 @@ import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
-public class Stapi {
+public class StapiService {
 
 	private static Client client = ClientBuilder.newClient();
 	private static WebTarget baseTarget = client.target("http://stapi.co/api/v1/rest/character");
