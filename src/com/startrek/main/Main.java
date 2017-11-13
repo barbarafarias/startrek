@@ -1,7 +1,7 @@
 package com.startrek.main;
 
 import com.startrek.model.Character;
-import com.startrek.utils.Stapi;
+import com.startrek.services.StapiService;
 import com.startrek.utils.Translator;
 
 public class Main {
@@ -18,7 +18,7 @@ public class Main {
 			String klingonName = Translator.translate(args);
 			character.setKlingonName(klingonName);
 
-			String characterSpecie = Stapi.getCharacterSpecie(character.getEnglishName());
+			String characterSpecie = StapiService.getCharacterSpecie(character.getEnglishName());
 			character.setSpecie(characterSpecie);
 
 			System.out.println(character.getKlingonName());
