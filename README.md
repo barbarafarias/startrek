@@ -2,7 +2,7 @@
 
 
 ## Requirements
- - JAVA 8
+ - [JAVA 8](https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)
  - [Apache Maven](https://maven.apache.org/index.html)
 
 ## How to Setup the project
