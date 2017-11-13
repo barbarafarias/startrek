@@ -29,8 +29,8 @@ public class Character {
 		return klingonName;
 	}
 
-	public void setKlingonName(String kligonName) {
-		this.klingonName = kligonName;
+	public void setKlingonName(String klingonName) {
+		this.klingonName = klingonName;
 	}
 
 	public String getSpecie() {
